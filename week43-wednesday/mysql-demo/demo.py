@@ -1,13 +1,17 @@
+import os
+from dotenv import load_dotenv
 import mysql.connector
+
+load_dotenv()
 
 def fetch_all_from_table(table):
     try:
         # Skapa en conn till db
         connection = mysql.connector.connect(
-            host="localhost",       # t.ex. 'localhost'
-            user="root",            # t.ex. 'root'
-            password="pappa444",    # t.ex. 'password'
-            database="test_db"      # t.ex. 'my_database'
+            host=os.getenv('DB_HOST'),
+            user=os.getenv('DB_USER'),
+            password=os.getenv('DB_PASSWORD'),
+            database=os.getenv('DB_NAME')
         )
         
         # Skapa cursor objekt för att köra SQL-frågor
