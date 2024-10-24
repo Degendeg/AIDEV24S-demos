@@ -33,8 +33,13 @@ def fetch_all_from_table(table):
         print(f"Error: {err}")
         return None
 
-res = fetch_all_from_table("auction")
+# Fånga input
+table_name = input("Enter table name: ")
 
+# Hämta alla rader baserat på input
+res = fetch_all_from_table(table_name)
+
+# Loopa igenom raderna
 if res:
     for r in res:
         print(r)
