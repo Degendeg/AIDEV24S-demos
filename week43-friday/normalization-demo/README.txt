@@ -1,15 +1,26 @@
-Demo: Normalisering
-DBMS: DBeaver
-Tips: Se material i Discord kring det vi pratat om hittills. I DBeaver så fungerar kortkommandot Ctrl+Enter för att exekvera specifik rad (SQL) eller markering. Kortkommandot Alt+X för att köra hela scriptfilen.
+## Demo: Normalisering  
+**DBMS**: DBeaver
 
--- Turordning för detta demo är:
+**Tips**: Se material i Discord för referens. I DBeaver fungerar kortkommandot:
+- **Ctrl+Enter** för att exekvera en specifik rad eller markering i SQL.
+- **Alt+X** för att köra hela scriptfilen.
 
-1. normalization_start.sql (inkluderade CREATE DATABASE ifall ni inte gör det via DBeaver/MySQL workbench GUI). Glöm inte att John Doe ska förekomma fler än 1 gång och Foo Bar endast 1 gång. Feel fre att lägga till flera namn.
+---
 
-2. 1NF.sql
+### Turordning för detta demo:
+1. **`normalization_start.sql`**  
+   - Innehåller `CREATE DATABASE`, ifall du inte skapar databasen via DBeaver/MySQL Workbench GUI.
+   - Kom ihåg: `John Doe` ska förekomma mer än en gång och `Foo Bar` endast en gång. Lägg gärna till fler namn.
 
-3. 2NF.sql
+2. **`1NF.sql`**
 
-4. 3NF.sql
+3. **`2NF.sql`**
 
-5. normalization_finish.sql (denna del är ny och ett försök att tydliggöra ännu mer när en kund gjort en specifik beställning kopplat till de items som finns på snabbmatsrestaurangen).
+4. **`3NF.sql`**
+
+5. **`normalization_finish.sql`**  
+   - Ny del för att tydligare visa när en kund har gjort en specifik beställning kopplat till menyvaror på en snabbmatsrestaurang.
+
+--- 
+
+Följ ovanstående ordning för att stegvis genomgå normalisering från start till 3NF.
