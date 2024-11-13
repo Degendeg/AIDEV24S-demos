@@ -1,0 +1,112 @@
+~~ Lathund MongoDB ~~
+
+--------------------------------------------------------
+
+1. Installera MongoDB
+
+1. Ladda ner och installera MongoDB: Gå till https://www.mongodb.com/try/download/community och välj rätt version för ditt operativsystem. Följ instruktionerna.
+
+--------------------------------------------------------
+
+2. **Starta MongoDB**: Starta MongoDB-servern med kommandot:
+
+   mongod
+
+   *Observera:* I vissa system körs MongoDB automatiskt som en tjänst. Om så är fallet kan du hoppa över detta steg.
+
+--------------------------------------------------------
+
+2. Anslut till MongoDB med MongoDB Shell
+
+Starta MongoDB Shell med kommandot:
+
+mongo
+
+När du är inne i MongoDB Shell kan du börja skapa databaser och göra frågor direkt.
+
+--------------------------------------------------------
+
+3. Skapa en databas
+
+Skapa en ny databas med kommandot `use`. Låt oss kalla databasen för `demoDB`:
+
+use demoDB
+
+Detta skapar en ny databas som heter `demoDB` och byter till den (Om db redan finns, byter kommandot bara till den)
+
+--------------------------------------------------------
+
+4. Skapa en samling och infoga data
+
+I MongoDB lagras data i samlingar (collections), vilket liknar tabeller i traditionella databaser.
+
+Låt oss skapa en samling som heter `users` och lägga till några dokument:
+
+db.users.insertMany([
+  { name: "Alice", age: 28, city: "Stockholm" },
+  { name: "Bob", age: 32, city: "Göteborg" },
+  { name: "Charlie", age: 25, city: "Malmö" }
+])
+
+Detta kommando skapar samlingen `users` (om den inte redan finns) och infogar tre dokument (motsvarande rader i en tabell).
+
+--------------------------------------------------------
+
+5. Hämta data från samlingen
+
+Nu kan du använda `find` för att hämta data från samlingen:
+
+db.users.find()
+
+Detta kommando visar alla dokument i `users`-samlingen. Resultatet kan se ut så här:
+
+{ "_id" : ObjectId("..."), "name" : "Alice", "age" : 28, "city" : "Stockholm" }
+{ "_id" : ObjectId("..."), "name" : "Bob", "age" : 32, "city" : "Göteborg" }
+{ "_id" : ObjectId("..."), "name" : "Charlie", "age" : 25, "city" : "Malmö" }
+
+--------------------------------------------------------
+
+6. Uppdatera data
+
+För att uppdatera ett dokument, använd `updateOne`. Låt oss ändra åldern för användaren "Alice":
+
+db.users.updateOne(
+  { name: "Alice" },
+  { $set: { age: 29 } }
+)
+
+Detta söker upp dokumentet med `name: "Alice"` och ändrar `age` till `29`.
+
+--------------------------------------------------------
+
+7. Ta bort data
+
+Om du vill ta bort ett dokument, använd `deleteOne`. Till exempel, för att ta bort "Bob":
+
+db.users.deleteOne({ name: "Bob" })
+
+Detta tar bort dokumentet där `name` är "Bob" från `users`-samlingen.
+
+--------------------------------------------------------
+
+8. Kontrollera strukturen med `show`-kommandon
+
+För att se alla databaser:
+
+show databases
+
+För att visa alla samlingar i databasen du arbetar med:
+
+show collections
+
+--------------------------------------------------------
+
+Sammanfattning
+
+Med dessa enkla kommandon har du skapat en databas, infogat, läst, uppdaterat och raderat data i en MongoDB-samling:
+
+1. Skapa databas:                 `use demoDB`
+2. Skapa samling och infoga data: `db.users.insertMany(...)`
+3. Läsa data:                     `db.users.find()`
+4. Uppdatera data:                `db.users.updateOne(...)`
+5. Ta bort data:                  `db.users.deleteOne(...)`
